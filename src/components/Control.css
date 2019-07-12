@@ -1,0 +1,27 @@
+.Control{
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 5px 0;
+    
+}
+
+.Control button{
+    display: block;
+    font: inherit;
+    padding: 5px;
+    margin: 0 5px;
+    width: 90px;
+    border: 1px solid grey;
+    cursor: pointer;
+    outline: none;
+}
+
+.Control .Board{
+    background-color: lightgrey;
+    color: white;
+}
+
+.Control button:hover {
+    background-color: darkgrey;
+}
