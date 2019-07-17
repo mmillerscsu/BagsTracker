@@ -4,10 +4,23 @@
     padding-top: 30px;
 }
 
-.Wrapper{
-    margin: 0 35px;
+.Team1Wrapper{
+    box-sizing: border-box;
+    width: 50%;
+    float: left;
+    margin-top: 25%;
+    margin-bottom: 20px;
 }
 
-.Spacing{
-    padding: 0 50px;
+.Team2Wrapper{
+    box-sizing: border-box;
+    width: 50%;
+    float: left;
+    margin-top: 25%;
+    margin-bottom: 20px;
 }
+
+.Controls{
+    text-align: center;
+}
+

@@ -3,9 +3,9 @@ import './Output.css'
 
 const Output = (props) => {
         return (
-            <div>
+            <div className="Score">
                 <h2>{props.teamName}</h2>
-                <h1 className="Score">
+                <h1>
                     {props.score}
                 </h1>
             </div>

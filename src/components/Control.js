@@ -4,8 +4,8 @@ import './Control.css'
 const Control = (props) => {
     return (
         <div className="Control">
-            <button className="Board" onClick={props.clicked}>{props.label}</button>
-            <div> : {props.type}</div>
+            <div className="Label">{props.label}</div>
+            <button onClick={props.clicked}>{props.type}</button>
         </div>
     )
 }

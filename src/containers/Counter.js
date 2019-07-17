@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 //import Controls from '../components/Controls';
 import Output from '../components/Output';
 import Control from '../components/Control';
+import SubmitControl from '../components/SubmitControl';
 import './Counter.css';
 
 const BOARD1 = "BOARD1";
@@ -114,20 +115,22 @@ export default class Counter extends Component {
     render() {  
 
          let winner = (
-             <div className="Wrapper">
+            <div>
+             <div className="Team1Wrapper">
                     <Output score={this.state.team1.totalScore} counter={this.state.team1.counter} teamName={this.state.team1.teamName}></Output>
-                    <div className="Control">
+                    <div className="Controls">
                         <Control label="BOARD" clicked={() => this.counterHandler(BOARD1)} type={this.state.team1.board}></Control>
-                        <div className="Spacing"></div>
                         <Control label="HOLE" clicked={() => this.counterHandler(HOLE1)} type={this.state.team1.hole}></Control> 
                     </div>
-
+            </div>
+            <div className="Team2Wrapper">
                     <Output score={this.state.team2.totalScore} counter={this.state.team2.counter} teamName={this.state.team2.teamName}></Output>
-                    <div className="Control">
+                    <div className="Controls">
                         <Control label="BOARD" clicked={() => this.counterHandler(BOARD2)} type={this.state.team2.board}></Control>
-                        <div className="Spacing"></div>
+                        
                         <Control label="HOLE" clicked={() => this.counterHandler(HOLE2)} type={this.state.team2.hole}></Control> 
                     </div>
+            </div>
             </div>
          )
 
@@ -150,8 +153,10 @@ export default class Counter extends Component {
         return (
             <div>
                 {winner}
-                <Control label={RESET} clicked={() => this.counterHandler(RESET)}></Control>
-                <Control label={SUBMIT} clicked={() => this.counterHandler(SUBMIT)}></Control>
+                <div className="SubControls">
+                    <SubmitControl label={RESET} clicked={() => this.counterHandler(RESET)}></SubmitControl>
+                    <SubmitControl label={SUBMIT} clicked={() => this.counterHandler(SUBMIT)}></SubmitControl>
+                </div>
             </div>
             
         )
