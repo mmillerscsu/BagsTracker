@@ -5,7 +5,26 @@
     margin-bottom: 25px;
 }
 
+.SubmitControl{
+    justify-content: center;
+    align-items: center;
+}
+
 .Control button{
+    background-color: lightgrey;
+    color: black;
+    
+    font: inherit;
+    padding: 5px;
+    margin: 0 5px;
+    width: 90px;
+    border: 1px solid grey;
+    cursor: pointer;
+    box-shadow: 5px 10px 18px darkgrey;
+    outline: none;
+}
+
+.SubmitControl button{
     background-color: lightgrey;
     color: black;
     
