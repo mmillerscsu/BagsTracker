@@ -158,7 +158,7 @@ export default class Counter extends Component {
                     <div className="Controls2">
                         <SubmitControl label={RESET} clicked={() => this.counterHandler(RESET)}></SubmitControl>
                         <SubmitControl label={SUBMIT} clicked={() => this.counterHandler(SUBMIT)}></SubmitControl>
-                        <SubmitControl label={ENDGAME} clicked={() => this.counterHandler(ENDGAME)}></SubmitControl>
+                        <SubmitControl label="NEWGAME" clicked={() => this.counterHandler(ENDGAME)}></SubmitControl>
                     </div>
                 </div>
             </div>

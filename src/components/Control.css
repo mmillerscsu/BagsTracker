@@ -8,6 +8,7 @@
 .SubmitControl{
     justify-content: center;
     align-items: center;
+    margin-right: 25px;
 }
 
 .Control button{
