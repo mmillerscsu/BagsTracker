@@ -4,6 +4,8 @@ import Output from '../components/Output';
 import Control from '../components/Control';
 import SubmitControl from '../components/SubmitControl';
 import './Counter.css';
+import Backdrop from '../components/Backdrop/Backdrop';
+import WinnerModal from '../components/Modal/WinnerModal';
 
 const BOARD1 = "BOARD1";
 const HOLE1 = "HOLE1";
@@ -30,7 +32,8 @@ export default class Counter extends Component {
             board: 0,
             teamName: "TEAM 2"
         },
-        reset: false
+        reset: false,
+        showModal: true
     }
 
     resetHandler = () => {
@@ -113,9 +116,30 @@ export default class Counter extends Component {
     }
 
     render() {  
+        
+        let modal = (
+            <div></div>
+        )
+
+        if(this.state.team1.totalScore >= 21){
+            modal = (
+                <div>
+                    <Backdrop show={this.state.showModal}></Backdrop>
+                    <WinnerModal color="Red" team="1" endgame={() => this.counterHandler(ENDGAME)} label="NEWGAME"></WinnerModal>
+                </div>
+            )
+         }else if(this.state.team2.totalScore >= 21){
+            modal = (
+                <div>
+                    <Backdrop show={this.state.showModal}></Backdrop>
+                    <WinnerModal color="Green" team="2" endgame={() => this.counterHandler(ENDGAME)} label="NEWGAME"></WinnerModal>
+                </div>
+            )   
+         }
 
          let winner = (
             <div>
+                {modal}
              <div className="Team1Wrapper">
                     <Output score={this.state.team1.totalScore} counter={this.state.team1.counter} teamName={this.state.team1.teamName}></Output>
                     <div className="Controls">
@@ -126,44 +150,21 @@ export default class Counter extends Component {
             <div className="Team2Wrapper">
                     <Output score={this.state.team2.totalScore} counter={this.state.team2.counter} teamName={this.state.team2.teamName}></Output>
                     <div className="Controls">
-                        <Control label="BOARD" clicked={() => this.counterHandler(BOARD2)} type={this.state.team2.board}></Control>
-                        
+                        <Control label="BOARD" clicked={() => this.counterHandler(BOARD2)} type={this.state.team2.board}></Control>   
                         <Control label="HOLE" clicked={() => this.counterHandler(HOLE2)} type={this.state.team2.hole}></Control> 
                     </div>
             </div>
-            </div>
-         )
-
-         if(this.state.team1.totalScore >= 21){
-            winner = (
-                <div>
-                    <div>Team 1 Wins!</div>
-                    <Control label={ENDGAME} clicked={() => this.counterHandler(ENDGAME)}></Control>
-                </div>
-            )
-         }else if(this.state.team2.totalScore >= 21){
-            winner = (
-                <div>
-                    <div>Team 2 Wins!</div>
-                    <Control label={ENDGAME} clicked={() => this.counterHandler(ENDGAME)}></Control>
-                </div>
-            )   
-         }
-        
-        return (
-            <div>
-                {winner}
-
-                <div className="ControlsWrapper" style={{paddingTop: '35%'}}>
+            <div className="ControlsWrapper" style={{paddingTop: '35%'}}>
                     <div className="Controls2">
                         <SubmitControl label={RESET} clicked={() => this.counterHandler(RESET)}></SubmitControl>
                         <SubmitControl label={SUBMIT} clicked={() => this.counterHandler(SUBMIT)}></SubmitControl>
                         <SubmitControl label="NEWGAME" clicked={() => this.counterHandler(ENDGAME)}></SubmitControl>
                     </div>
-                </div>
             </div>
-            
-        )
+            </div>
+         )
+
+        return winner
         
     }
 }
